@@ -27,6 +27,8 @@ public class StockController : ControllerBase
     public async Task<IActionResult> GetAll()
     {
         var stocks = await _stockRepo.GetAllAsync();
+        // var stocks = await _context.Stocks.ToListAsync();
+        // Console.WriteLine(stocks);
         var stockDto = stocks.Select(s => s.ToStockDto());
 
         return Ok(stockDto);

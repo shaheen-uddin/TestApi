@@ -79,7 +79,7 @@ namespace TestApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Stoctks");
+                    b.ToTable("Stocks");
                 });
 
             modelBuilder.Entity("TestApi.Models.Comment", b =>
