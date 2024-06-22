@@ -13,7 +13,7 @@ namespace TestApi.Data
         {
 
         }
-        public DbSet<Stock> Stoctks { get; set; }
+        public DbSet<Stock> Stocks { get; set; }
         public DbSet<Comment> Comments { get; set; }
     }
 }
