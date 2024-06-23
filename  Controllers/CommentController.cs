@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TestApi.Data;
 using TestApi.Interfaces;
+using TestApi.Mappers;
 
 namespace TestApi.Controllers;
 
@@ -16,5 +17,12 @@ public class CommentController : ControllerBase
     public CommentController(ICommentRepository commentRepo)
     {
         _commentRepo = commentRepo;
+    }
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var comments = await _commentRepo.GetAllAsync();
+        var commentDto = comments.Select(s => s.ToCommentDto());
+        return Ok(commentDto);
     }
 }
