@@ -64,7 +64,7 @@ public class CommentController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
-        var commentModel = _commentRepo.DeleteAsync(id);
+        var commentModel = await _commentRepo.DeleteAsync(id);
         if (commentModel is null)
         {
             return NotFound("Comment doesn't exist.");
