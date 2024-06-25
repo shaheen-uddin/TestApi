@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TestApi.Data;
 using TestApi.Dtos.Stock;
+using TestApi.Helpers;
 using TestApi.Interfaces;
 using TestApi.Mappers;
 
@@ -24,9 +25,21 @@ public class StockController : ControllerBase
     }
 
     [HttpGet]
+
     public async Task<IActionResult> GetAll()
     {
         var stocks = await _stockRepo.GetAllAsync();
+        // var stocks = await _context.Stocks.ToListAsync();
+        // Console.WriteLine(stocks);
+        var stockDto = stocks.Select(s => s.ToStockDto());
+
+        return Ok(stockDto);
+    }
+    //[Route("/search")]
+    [HttpGet("search")]
+    public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
+    {
+        var stocks = await _stockRepo.GetAllAsync(query);
         // var stocks = await _context.Stocks.ToListAsync();
         // Console.WriteLine(stocks);
         var stockDto = stocks.Select(s => s.ToStockDto());

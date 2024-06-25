@@ -13,7 +13,7 @@ namespace TestApi.Dtos.Comment
         public string Title { get; set; } = string.Empty;
         [Required]
         [MinLength(8, ErrorMessage = "The content must be 8 characters long.")]
-        [MaxLength(100, ErrorMessage = "The content must not be above 100 characters long.")]
+        [MaxLength(255, ErrorMessage = "The content must not be above 255 characters long.")]
         public string Content { get; set; } = string.Empty;
     }
 }

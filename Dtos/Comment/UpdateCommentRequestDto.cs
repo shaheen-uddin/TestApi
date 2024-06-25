@@ -14,6 +14,6 @@ public class UpdateCommentRequestDto
 
     [Required]
     [MinLength(10, ErrorMessage = "The title must be 20 character length.")]
-    [MaxLength(100, ErrorMessage = "The content must not be above 100 characters long.")]
+    [MaxLength(255, ErrorMessage = "The content must not be above 255 characters long.")]
     public string Content { get; set; } = string.Empty;
 }
